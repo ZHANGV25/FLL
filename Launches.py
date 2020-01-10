@@ -36,9 +36,39 @@ TanTower = [
     ["Drive"           ,  0  , -20  , -160 ],
 ]
 
-RedTower = [
-    ["Drive"           ,  0  ,  10  ,  65  ],
-    ["Drive"           ,  0  , -20  , -115 ],
+TreeHouse = [
+//Still testing
+    ["DriveUltrasonic" ,  0  ,  20  ,  60  ],    
+    ["Turn"            ,  0  ,  10  ,  90  ],
+    ["DriveUltrasonic" ,  0  ,  20  ,  90  ], 
+    ["Turn"            ,  0  ,  10  , -45  ],
+    ["Drive"           ,  0  ,  30  ,  10  ],
+    ["Drive"           ,  0  , -30  ,  10  ],
+    ["Turn"            ,  0  ,  30  ,  45  ],
+    ["DriveUltrasonic" ,  0  , -20  ,   0  ], 
+    ["Turn"            ,  0  ,  30  , -90  ],
+]
+
+Crane = [
+    ["DriveUltrasonic" ,  0  ,  10  ,  10  ],
+    ["Turn"            ,  0  ,  30  ,  90  ],
+    ["DriveUltrasonic" ,  90 ,  10  ,  57  ],
+    ["Turn"            ,  0  , -30  ,  0   ],
+    ["DriveUltrasonic" ,  0  ,  10  ,  60  ],
+    ["DriveUltrasonic" ,  0  , -5   ,  50  ],
+    ["DriveUltrasonic" ,  0  ,  5   ,  65  ],
+    ["Wait"            ,  2                ],
+    ["DriveUltrasonic" ,  0  , -20  ,  50  ],
+    ["Turn"            ,  0  ,  30  ,  90  ],
+    ["DriveUltrasonic" ,  90 , -20  ,  10  ],
+    ["Turn"            ,  5  , -30  ,  0   ],
+]
+
+LargeTower = [
+    ["Drive"           ,  0  ,  5   ,  5   ],
+    ["DriveUltrasonic" ,  0  ,  5   ,  60  ],
+    ["DriveUltrasonic" ,  0  , -20  ,  20  ],
+    ["Turn"            , -20 ,  30  ,  90  ],
 ]
 
 South = [
@@ -57,16 +87,4 @@ South = [
     ["Turn"            ,  5  , -30  ,  0   ],
 ]
 
-West = [
-    ["DriveUltrasonic" ,  0 ,   10  ,  65  ],
-    ["DriveUltrasonic" ,  0 ,  -10  ,  5   ],
-]
-
-LargeTower = [
-    ["Drive"           ,  0  ,  5   ,  5   ],
-    ["DriveUltrasonic" ,  0  ,  5   ,  60  ],
-    ["DriveUltrasonic" ,  0  , -20  ,  20  ],
-    ["Turn"            , -20 ,  30  ,  90  ],
-]
-
-Launches = [TanTower, RedTower, West, LargeTower]
+Launches = [TanTower, TreeHouse, Crane, LargeTower, South]
