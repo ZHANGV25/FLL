@@ -25,31 +25,24 @@
 #   ["Drive"           ,  1  ,  1  ,  1  ],
 #   ["DriveUltrasonic" ,  1  ,  1  ,  2  ],
 #   ["Turn"            ,  2  ,  2  ,  3  ],
-#   ["LineFollow"      ,        1        ],
+#   ["LineFollow"      ,        1        ]
 #   ["MotorOn"         ,  3  ,  3        ],
 #   ["MotorOff"        ,  3              ],
 #   ["Wait"            ,              4  ],
 # ]
 
-TanTower = [
-    ["Drive"           ,  0  ,  10  ,  110 ],
-    ["Drive"           ,  0  , -20  , -160 ],
+SafetyFactor = [
+    ["Turn"             ,  0  ,  30  ,  180 ],
 ]
 
 TreeHouse = [
-//Still testing
-    ["DriveUltrasonic" ,  0  ,  20  ,  60  ],    
-    ["Turn"            ,  0  ,  10  ,  90  ],
-    ["DriveUltrasonic" ,  0  ,  20  ,  90  ], 
-    ["Turn"            ,  0  ,  10  , -45  ],
-    ["Drive"           ,  0  ,  30  ,  10  ],
-    ["Drive"           ,  0  , -30  ,  10  ],
-    ["Turn"            ,  0  ,  30  ,  45  ],
-    ["DriveUltrasonic" ,  0  , -20  ,   0  ], 
-    ["Turn"            ,  0  ,  30  , -90  ],
+    ["Drive"            ,  0  ,  20  ,  65 ],
+    ["Drive"            ,  0  , -30  , -70 ],
+    ["Turn"             ,  0  ,  10  ,  45 ],
+    ["Drive"            ,  0  , -30  ,  10 ],
 ]
 
-Crane = [
+West = [
     ["DriveUltrasonic" ,  0  ,  10  ,  10  ],
     ["Turn"            ,  0  ,  30  ,  90  ],
     ["DriveUltrasonic" ,  90 ,  10  ,  57  ],
@@ -87,4 +80,4 @@ South = [
     ["Turn"            ,  5  , -30  ,  0   ],
 ]
 
-Launches = [TanTower, TreeHouse, Crane, LargeTower, South]
+Launches = [SafetyFactor, TreeHouse, West, LargeTower, South]
