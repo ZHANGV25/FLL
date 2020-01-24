@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 
+# Returns a list representing a launch that places a tower.
+def Tower(distance, angle):
+    return [
+        ["Drive"           , 0     ,  20 ,  distance ],
+        ["Drive"           , 0     , -30 , -distance ],
+        ["Turn"            , 0     ,  30 ,  angle    ],
+        ["DriveUltrasonic" , angle , -30 ,  5        ],
+    ]
+
 # Key a (path):
 #
 #  1 - angle
@@ -25,31 +34,26 @@
 #   ["Drive"           ,  1  ,  1  ,  1  ],
 #   ["DriveUltrasonic" ,  1  ,  1  ,  2  ],
 #   ["Turn"            ,  2  ,  2  ,  3  ],
-#   ["LineFollow"      ,        1        ]
+#   ["LineFollow"      ,        1        ],
 #   ["MotorOn"         ,  3  ,  3        ],
 #   ["MotorOff"        ,  3              ],
 #   ["Wait"            ,              4  ],
 # ]
 
-SafetyFactor = [
-    ["Turn"             ,  0  ,  30  ,  180 ],
-]
+# Places the tan tower.
+TanTower = Tower(110, 26)
 
-TreeHouse = [
-    ["Drive"            ,  0  ,  20  ,  65 ],
-    ["Drive"            ,  0  , -30  , -70 ],
-    ["Turn"             ,  0  ,  10  ,  45 ],
-    ["Drive"            ,  0  , -30  ,  10 ],
-]
+# Places the red tower.
+RedTower = Tower(65, 22)
 
-West = [
+# Does all aspects of the crane mission.
+Crane = [
     ["DriveUltrasonic" ,  0  ,  10  ,  10  ],
     ["Turn"            ,  0  ,  30  ,  90  ],
     ["DriveUltrasonic" ,  90 ,  10  ,  57  ],
     ["Turn"            ,  0  , -30  ,  0   ],
     ["DriveUltrasonic" ,  0  ,  10  ,  60  ],
-    ["DriveUltrasonic" ,  0  , -5   ,  50  ],
-    ["DriveUltrasonic" ,  0  ,  5   ,  65  ],
+    ["Drive"           ,  0  ,  2   ,  15  ],
     ["Wait"            ,  2                ],
     ["DriveUltrasonic" ,  0  , -20  ,  50  ],
     ["Turn"            ,  0  ,  30  ,  90  ],
@@ -57,27 +61,27 @@ West = [
     ["Turn"            ,  5  , -30  ,  0   ],
 ]
 
-LargeTower = [
-    ["Drive"           ,  0  ,  5   ,  5   ],
-    ["DriveUltrasonic" ,  0  ,  5   ,  60  ],
-    ["DriveUltrasonic" ,  0  , -20  ,  20  ],
-    ["Turn"            , -20 ,  30  ,  90  ],
+# Places the blue and white towers in the black circle.
+MixedTower = Tower(55, 90)
+
+# Flips the elevator and lowers two beams on the safety factor.
+East = [
+    ["Drive"            ,  0  ,  20  ,  65  ],
+    ["Drive"            ,  0  , -20  , -20  ],
+    ["Turn"             ,  0  , -40  , -141 ],
+    ["Drive"            , -137, -20  , -97  ],
+    ["Turn"             ,  0  ,  35  ,  45  ],
+    ["Drive"            ,  45 , -20  ,-150  ],
+    ["Turn"             ,  10 , -90  , -45  ],
 ]
 
+# Raises the traffic jam and starts the swing.
 South = [
-    ["Turn"            ,  11 ,  30  ,  90  ],
-    ["MotorOn"         ,  1  ,  .11        ],
-    ["Drive"           ,  90 ,  10  ,  90  ],
-    ["MotorOff"        ,  1                ],
-    ["Turn"            ,  0  , -30  ,  75  ],
-    ["LineFollow"      ,        5          ],
-    ["Turn"            , -10 ,  30  ,  90  ],
-    ["MotorOn"         ,  1  , -.5         ],
-    ["Drive"           ,  90 ,  10  ,  20  ],
-    ["MotorOff"        ,  1                ],
+    ["Turn"            ,  12 ,  30  ,  90  ],
+    ["Drive"           ,  90 ,  10  ,  105 ],
     ["Wait"            ,               1   ],
-    ["DriveUltrasonic" ,  90 , -20  ,  10  ],
+    ["DriveUltrasonic" ,  90 , -30  ,  10  ],
     ["Turn"            ,  5  , -30  ,  0   ],
 ]
 
-Launches = [SafetyFactor, TreeHouse, West, LargeTower, South]
+Launches = [TanTower, RedTower, Crane, MixedTower, East, South]
