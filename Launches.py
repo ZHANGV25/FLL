@@ -41,10 +41,10 @@ def Tower(distance, angle):
 # ]
 
 # Places the tan tower.
-TanTower = Tower(110, 26)
+TanTower = Tower(110, 50)
 
 # Places the red tower.
-RedTower = Tower(65, 22)
+RedTower = Tower(65, 50)
 
 # Does all aspects of the crane mission.
 Crane = [
@@ -53,8 +53,8 @@ Crane = [
     ["DriveUltrasonic" ,  90 ,  10  ,  57  ],
     ["Turn"            ,  0  , -30  ,  0   ],
     ["DriveUltrasonic" ,  0  ,  10  ,  60  ],
-    ["Drive"           ,  0  ,  2   ,  15  ],
-    ["Wait"            ,  2                ],
+    ["Drive"           ,  0  ,  2   ,  10  ],
+    ["Wait"            ,  1                ],
     ["DriveUltrasonic" ,  0  , -20  ,  50  ],
     ["Turn"            ,  0  ,  30  ,  90  ],
     ["DriveUltrasonic" ,  90 , -20  ,  10  ],
@@ -68,10 +68,19 @@ MixedTower = Tower(55, 90)
 East = [
     ["Drive"            ,  0  ,  20  ,  65  ],
     ["Drive"            ,  0  , -20  , -20  ],
-    ["Turn"             ,  0  , -40  , -141 ],
-    ["Drive"            , -137, -20  , -97  ],
+    ["Turn"             ,  0  , -40  , -140 ],
+    ["Drive"            , -137, -20  , -98  ],
     ["Turn"             ,  0  ,  35  ,  45  ],
-    ["Drive"            ,  45 , -20  ,-150  ],
+    ["MotorOn"          ,  0  ,  3          ],
+    ["Wait"             ,  1                ],
+    ["MotorOff"         ,  0                ],
+    ["MotorOn"          ,  0  , -3          ],
+    ["Wait"             ,  1                ],
+    ["MotorOff"         ,  0                ],
+    ["MotorOn"          ,  0  ,  3          ],
+    ["Wait"             ,  1                ],
+    ["MotorOff"         ,  0                ],
+    ["Drive"            ,  45 , -20  ,-153  ],
     ["Turn"             ,  10 , -90  , -45  ],
 ]
 
