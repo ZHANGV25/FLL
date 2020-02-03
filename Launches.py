@@ -66,20 +66,14 @@ MixedTower = Tower(55, 90)
 
 # Flips the elevator and lowers two beams on the safety factor.
 East = [
-    ["Drive"            ,  0  ,  20  ,  65  ],
+    ["Drive"            ,  0  ,  20  ,  67  ],
     ["Drive"            ,  0  , -20  , -20  ],
     ["Turn"             ,  0  , -40  , -140 ],
-    ["Drive"            , -137, -20  , -98  ],
+    ["Drive"            , -135, -20  , -98  ],
     ["Turn"             ,  0  ,  35  ,  45  ],
-    ["MotorOn"          ,  0  ,  3          ],
-    ["Wait"             ,  1                ],
-    ["MotorOff"         ,  0                ],
-    ["MotorOn"          ,  0  , -3          ],
-    ["Wait"             ,  1                ],
-    ["MotorOff"         ,  0                ],
-    ["MotorOn"          ,  0  ,  3          ],
-    ["Wait"             ,  1                ],
-    ["MotorOff"         ,  0                ],
+    ["Turn"             ,  0  , -35  , -40  ],
+    ["Drive"            , -50 , -20  , -10  ],
+    ["Turn"             ,  0  ,  35  , -30  ],
     ["Drive"            ,  45 , -20  ,-153  ],
     ["Turn"             ,  10 , -90  , -45  ],
 ]
