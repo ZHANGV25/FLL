@@ -48,7 +48,10 @@ class MakeRobot:
             # Turn on the motors.
             right = Self.SpeedCPS(Speed) * ((StartAngle + Self.Gyro.angle) / 45 * Speed / abs(Speed) + 1)
             left = Self.SpeedCPS(Speed) * (-(StartAngle + Self.Gyro.angle) / 45  * Speed / abs(Speed) + 1)
-            Self.TankBase.on(right, left)
+            try:
+                Self.TankBase.on(right, left)
+            except AssertionError:
+                pass
             if Self.Button("DOWN"):
                 LaunchExited = True
                 break
@@ -67,7 +70,10 @@ class MakeRobot:
             # Turn on the motors.
             right = Self.SpeedCPS(Speed) * ((StartAngle + Self.Gyro.angle) / 45 * Speed / abs(Speed) + 1)
             left = Self.SpeedCPS(Speed) * (-(StartAngle + Self.Gyro.angle) / 45  * Speed / abs(Speed) + 1)
-            Self.TankBase.on(right, left)
+            try:
+                Self.TankBase.on(right, left)
+            except AssertionError:
+                pass
             if Self.Button("DOWN"):
                 LaunchExited = True
                 break
@@ -108,7 +114,7 @@ class MakeRobot:
     def LineFollow(Self, Args):
         Speed = Args[0]
         # Max value for sensing black.
-        MaxValue = 10
+        MaxValue = 15
         # Wait for both color sensors to sense black.
         LaunchExited = False
         while Self.Color1.value() > MaxValue or Self.Color2.value() > MaxValue:
