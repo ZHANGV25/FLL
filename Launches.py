@@ -29,6 +29,16 @@ def Tower(distance, angle):
 #  4 - seconds
 
 #   ["MoveType"        ,  a  ,  b  ,  c  ],
+#
+# LaunchName = [
+#   ["Drive"           ,  1  ,  1  ,  1  ],
+#   ["DriveUltrasonic" ,  1  ,  1  ,  2  ],
+#   ["Turn"            ,  2  ,  2  ,  3  ],
+#   ["LineFollow"      ,        1        ],
+#   ["MotorOn"         ,  3  ,  3        ],
+#   ["MotorOff"        ,  3              ],
+#   ["Wait"            ,              4  ],
+# ]
 
 # Flips the elevator and lowers two beams on the safety factor.
 East = [
@@ -52,10 +62,11 @@ East = [
 
 
 
-# Places both tower
-TanTower = Tower(110, 50)
-RedTower = Tower(58, 50)
+#Places other towers
 MixedTower = Tower(55, 90)
+
+#Places Innovative
+InnovativeAndOther = Tower(60, 45)
 
 # Does all aspects of the crane mission.
 Crane = [
@@ -73,10 +84,43 @@ Crane = [
 
 # Raises the traffic jam and starts the swing.
 South = [
-    ["Turn"            ,  12 ,  30  ,  90  ],   
-    ["Drive"           ,  90 ,  10  ,  50  ],
-    ["DriveUltrasonic" ,  90 , -30  ,  10  ],
-    ["Turn"            ,  5  , -30  ,  0   ],
+    #Starts turning the motors to lock the towers in place
+    ["MotorOn"         ,  0  , -4          ],
+    ["Wait"            , 0.80              ],
+    ["MotorOff"        ,  0                ],
+    ["MotorOn"         ,  1  ,  4          ],
+    ["Wait"            , 0.17              ],
+    ["MotorOff"        ,  1                ],
+    #Turns towrds traffic jam
+    ["Turn"            , 11  ,  30  ,  90  ],
+    #Drives until it has wedged under the traffic jam
+    ["DriveUltrasonic" ,  90 ,  20  ,  120 ],
+    #Fully lifts up traffic jam
+    ["Turn"            , 10  , -30  ,   0  ],
+    #Goes forward and turns towrds tan towers
+    ["Drive"           ,  0  ,  20  ,  10  ],
+    ["Turn"            ,  0  ,  30  ,  90  ],
+    ["DriveUltrasonic" ,  90 ,  20  ,  149 ],
+    ["Turn"            ,  0.9, -30  ,  0   ],
+    ["DriveUltrasonic" ,  0  ,  20  ,  50  ],
+    #Drops of tan towers
+    ["MotorOn"         ,  0  ,  4          ],
+    ["Wait"            , 0.80              ],
+    ["MotorOff"        ,  0                ],
+    #Backs up and turns towrds red towers
+    ["DriveUltrasonic" ,  0  , -20  ,  15  ],
+    ["Turn"            ,  0  ,  30  ,  90  ],
+    ["Drive"           , 90  , -20  , -30  ],
+    #Drops of red towers
+    ["MotorOn"         ,  1  , -4          ],
+    ["Wait"            , 0.17              ],
+    ["MotorOff"        ,  1                ],
+    ["Wait"            ,  1                ],
+    #Comes back home
+    ["Drive"           ,  90 , -20  , -50  ],
+    #Closes the door to fit in base
+    ["MotorOn"         ,  1  ,  0.01       ],
+    ["Drive"           ,  90 , -20  , -65  ],
 ]
 
-Launches = [East, TanTower, RedTower, Crane, MixedTower, South]
+Launches = [East, South, Crane, MixedTower, InnovativeAndOther]
