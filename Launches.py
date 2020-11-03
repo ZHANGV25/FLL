@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-
-# Returns a list representing a launch that places a tower.
-def Tower(distance, angle):
-    return [
-        ["Drive"           , 0     ,  20 ,  distance ],
-        ["Drive"           , 0     , -30 , -distance ],
-        ["Turn"            , 0     ,  30 ,  angle    ],
-        ["DriveUltrasonic" , angle , -30 ,  5        ],
-    ]
+# -*- coding: utf-8 -*-
 
 # Key a (path):
 #
@@ -40,34 +32,28 @@ def Tower(distance, angle):
 #   ["Wait"            ,              4  ],
 # ]
 
-# Flips the elevator and lowers two beams on the safety factor.
+# Run #1- Bench and Slide
 East = [
-    #Does treehouse
-    ["Drive"            ,  0  ,  20  ,  67  ],
-    ["Drive"            ,  0  , -20  , -20  ],
-    #Turns towrds safety factor
-    ["Turn"             ,  0  , -40  , -133 ],
-    #Does safety factor and elevator
-    ["Drive"            , -133, -20  , -100 ],
-    ["Turn"             ,  0  ,  35  ,  45  ],
-    #Does swing
-    ["Turn"             ,  0  , -40  , -60  ],
-    ["Drive"            , -60 , -30  , -10  ],
-    ["Turn"             ,  10 , -40  , -90  ],
-    ["Drive"            , -90 ,  30  ,  15  ],
-    ["Turn"             ,  0  , -40  , -135 ],
-    ["Drive"            , -135,  30  ,  150 ],
-    ["Turn"             ,  10 ,  40  , -50  ],
+    # Does Bench 
+    ["Drive"            ,  0  ,  40  ,  45  ],
+    ["MotorOn"          ,  0  , -8          ],
+    ["MotorOff"         ,  0                ],
+    # Turns and faces Slide
+    ["Drive"            ,  0  , -25   , -45 ],
+    ["Turn"             ,  0  ,  45   ,  90 ],
+    ["Drive"            ,  0  ,  40   ,  45 ],
+    # Code if we are NOT using a passive attachment:
+    # ["MotorOn"       ,   0  ,  -4    ], 
+    # ["MotorOff"      ,   0           ],
+    ["Wait"             ,                 4 ],
+    ["Drive"            ,  0  , -40   , -40 ],
+    # Comes back to home
+    ["Turn"             ,  0  , -30   ,  30 ],
+    ["Drive"            ,  0  , -40   , -40 ],
+   
 ]
 
-
-
-#Places other towers
-MixedTower = Tower(55, 90)
-
-#Places Innovative
-InnovativeAndOther = Tower(60, 45)
-
+# NOT UPDATED YET 
 # Does all aspects of the crane mission.
 Crane = [
     ["DriveUltrasonic" ,  0  ,  10  ,  10  ],
