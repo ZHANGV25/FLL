@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 class MakeRobot:
-
+    # We make our own MakeRobot class
     def __init__(Self, WheelDistance, WheelDiameter, TankBase, MedMotors, Ultrasonic, Color1, Color2, Gyro): # WheelDistance and WheelDiameter in cm.
         # Import the parts of the robot.
         from ev3dev2.button import Button
@@ -8,6 +8,7 @@ class MakeRobot:
         from ev3dev2.motor import MoveTank, MediumMotor, LargeMotor, SpeedRPS, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D
         from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
         from ev3dev2.sensor.lego import UltrasonicSensor, ColorSensor, GyroSensor
+        from ev3dev2.led import Leds
         # Define the ports.
         Ports = {"A" : OUTPUT_A, "B" : OUTPUT_B, "C" : OUTPUT_C, "D" : OUTPUT_D,
                  "1" :  INPUT_1, "2" :  INPUT_2, "3" :  INPUT_3, "4" :  INPUT_4}
@@ -24,9 +25,11 @@ class MakeRobot:
         Self.Gyro = GyroSensor(Ports[Gyro])
         Self.Buttons = Button()
         Self.LCD = Display()
+        Self.LED = Leds()
         # Lock the medium motors.
         Self.MotorOff([0])
         Self.MotorOff([1])
+        
 
     # In launch functions.
 
@@ -48,6 +51,7 @@ class MakeRobot:
             # Turn on the motors.
             right = Self.SpeedCPS(Speed) * ((StartAngle + Self.Gyro.angle) / 45 * Speed / abs(Speed) + 1)
             left = Self.SpeedCPS(Speed) * (-(StartAngle + Self.Gyro.angle) / 45  * Speed / abs(Speed) + 1)
+            # We added a try/except command so it wouldn't exit the program if the Gyro tried making the motors turn to much
             try:
                 Self.TankBase.on(right, left)
             except AssertionError:
@@ -70,6 +74,7 @@ class MakeRobot:
             # Turn on the motors.
             right = Self.SpeedCPS(Speed) * ((StartAngle + Self.Gyro.angle) / 45 * Speed / abs(Speed) + 1)
             left = Self.SpeedCPS(Speed) * (-(StartAngle + Self.Gyro.angle) / 45  * Speed / abs(Speed) + 1)
+            # We added a try/except command so it wouldn't exit the program if the Gyro tried making the motors turn to much
             try:
                 Self.TankBase.on(right, left)
             except AssertionError:
@@ -151,6 +156,56 @@ class MakeRobot:
         # Return a boolean for whether or not the the launch was ended by the user.
         return LaunchExited
 
+    def AccelDrive(Self, Args): 
+        #Defines the Arguments
+        (StartAngle, MinSpeed, MaxSpeed, Distance, Latency) = Args
+        #Importing the time library
+        from time import time as Time
+        End = Time() + Latency
+        # Wait for the time to be up.
+        LaunchExited = False
+        # Get motor angle information.
+        Start = Self.DriveMotor.position
+        DegreesMoved = Distance / Self.WheelCircumference * 360
+        EndPos = Start + DegreesMoved
+        Speed = 0
+        
+        while ((EndPos > Self.DriveMotor.position and Speed > 0) # Use this condition when the motor position is increasing (Speed > 0).
+                or
+               (EndPos < Self.DriveMotor.position and Speed < 0)):  # Use this condition when the motor position is decreasing (Speed < 0).
+            # Controlls Acceleration Speed
+            End = Time() + Latency
+            if Speed < MaxSpeed:
+                Speed += (1 if (Self.DriveMotor.position) / 2 < EndPos, -1 if (Self.DriveMotor.position) / 2 => EndPos)
+                while End > Time():
+                    if Self.Button("DOWN"):
+                        LaunchExited = True
+                        break
+            elif Speed < MinSpeed:
+                Speed = MinSpeed
+            else:
+                Speed = MaxSpeed
+            # Turn on the motors.
+            right = Self.SpeedCPS(Speed) * ((StartAngle + Self.Gyro.angle) / 45 * Speed / abs(Speed) + 1)
+            left = Self.SpeedCPS(Speed) * (-(StartAngle + Self.Gyro.angle) / 45  * Speed / abs(Speed) + 1)
+            # We added a try/except command so it wouldn't exit the program if the Gyro tried making the motors turn to much
+            try:
+                Self.TankBase.on(right, left)
+            except AssertionError:
+                pass
+            if Self.Button("DOWN"):
+                LaunchExited = True
+                break
+        # Turn off the motors.
+        Self.TankBase.off()
+        # Return a boolean for whether or not the the launch was ended by the user.
+        return LaunchExited
+
+    def LEDColor(Self, Args):
+        (LightID, Color) = Args
+        Self.LED.set_color(LightID, Color)
+
+        
     # Function list.
 
     InLaunchFunctions = {"Drive" : Drive,
@@ -159,7 +214,9 @@ class MakeRobot:
                          "LineFollow" : LineFollow,
                          "MotorOn" : MotorOn,
                          "MotorOff" : MotorOff,
-                         "Wait" : Wait}
+                         "Wait" : Wait
+                         "AccelDrive" : AccelDrive
+                         "LEDColor" : LEDColor}
     
     # Other functions.
     
