@@ -53,21 +53,19 @@ East = [
    
 ]
 
-# NOT UPDATED YET 
+
 # Run #2- Step Counter (M02), Pull-up Bar (M06), Boccia (M08), Basketball (M05)
 NorthEast = [
-    ["DriveUltrasonic" ,  0  ,  10  ,  10  ],
-    ["Turn"            ,  0  ,  40  ,  90  ],
-    ["DriveUltrasonic" ,  90 ,  10  ,  59  ],
-    ["Turn"            ,  0  , -40  ,  0   ],
-    ["DriveUltrasonic" ,  0  ,  20  ,  60  ],
-    ["Drive"           ,  0  ,  2   ,  12  ],
-    ["DriveUltrasonic" ,  0  , -30  ,  30  ],
-    ["Turn"            ,  0  ,  30  ,  90  ],
-    ["DriveUltrasonic" ,  90 , -20  ,  10  ],
-    ["Turn"            ,  5  , -30  ,  0   ],
+    ["Drive"           ,  0  ,  50  ,  25  ],
+    ["Drive"           ,  0  ,  20  ,  10  ],
+    ["Drive"           ,  0  ,  -20 ,  -10 ],
+    ["Turn"            ,  25 ,  -30 ,  -30 ],
+    ["Drive"           ,  0  ,  30  ,   15 ],
+    ["Turn"            ,  25 ,  30  ,   15 ],
+    ["Drive"           ,  0  ,  60  ,   35 ],
 ]
 
+# NOT UPDATED YET
 # Run #3- Treadmill (M11), Row machine (M12), Weight machine (M13), Cell phone (M10)
 NorthWest = [
     #Starts turning the motors to lock the towers in place
