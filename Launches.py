@@ -54,8 +54,8 @@ East = [
 ]
 
 # NOT UPDATED YET 
-# Does all aspects of the crane mission.
-Crane = [
+# Run #2- Step Counter, Pull-up Bar, Boccia, Basketball
+NorthEast = [
     ["DriveUltrasonic" ,  0  ,  10  ,  10  ],
     ["Turn"            ,  0  ,  40  ,  90  ],
     ["DriveUltrasonic" ,  90 ,  10  ,  59  ],
@@ -68,8 +68,8 @@ Crane = [
     ["Turn"            ,  5  , -30  ,  0   ],
 ]
 
-# Raises the traffic jam and starts the swing.
-South = [
+# Run #3- Treadmill, Row machine, Weight machine, Cell phone
+NorthWest = [
     #Starts turning the motors to lock the towers in place
     ["MotorOn"         ,  0  , -4          ],
     ["Wait"            , 0.80              ],
@@ -109,4 +109,9 @@ South = [
     ["Drive"           ,  90 , -20  , -65  ],
 ]
 
-Launches = [East, South, Crane, MixedTower, InnovativeAndOther]
+#Run #4- Tires, Robot dance
+RobotDance = [
+    
+]
+
+Launches = [East, NorthEast, NorthWest, RobotDance]
