@@ -32,7 +32,7 @@
 #   ["Wait"            ,              4  ],
 # ]
 
-# Run #1- Bench and Slide
+# Run #1- Bench (M04) and Slide (M03)
 East = [
     # Does Bench 
     ["Drive"            ,  0  ,  40  ,  45  ],
@@ -54,7 +54,7 @@ East = [
 ]
 
 # NOT UPDATED YET 
-# Run #2- Step Counter, Pull-up Bar, Boccia, Basketball
+# Run #2- Step Counter (M02), Pull-up Bar (M06), Boccia (M08), Basketball (M05)
 NorthEast = [
     ["DriveUltrasonic" ,  0  ,  10  ,  10  ],
     ["Turn"            ,  0  ,  40  ,  90  ],
@@ -68,7 +68,7 @@ NorthEast = [
     ["Turn"            ,  5  , -30  ,  0   ],
 ]
 
-# Run #3- Treadmill, Row machine, Weight machine, Cell phone
+# Run #3- Treadmill (M11), Row machine (M12), Weight machine (M13), Cell phone (M10)
 NorthWest = [
     #Starts turning the motors to lock the towers in place
     ["MotorOn"         ,  0  , -4          ],
@@ -109,7 +109,7 @@ NorthWest = [
     ["Drive"           ,  90 , -20  , -65  ],
 ]
 
-#Run #4- Tires, Robot dance
+#Run #4- Tire Flip (M09), Robot dance (M07)
 RobotDance = [
     
 ]
