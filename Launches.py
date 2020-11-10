@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
-
-
 # Run #1- Bench (M04) and Slide (M03)
 East = [
     # Does Bench 
@@ -61,5 +58,3 @@ RobotDance = [
 ]
 
 Launches = [East, NorthEast, NorthWest, RobotDance]
-
-
