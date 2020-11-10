@@ -37,10 +37,22 @@ NorthEast = [
     ["Drive"           ,  0  ,  60  ,   35 ],
 ]
 
-# NOT UPDATED YET
 # Run #3- Treadmill (M11), Row machine (M12), Weight machine (M13), Cell phone (M10)
 NorthWest = [
-
+    ["Drive"           ,  0  ,  40  ,  100 ],
+    # Spin Treadmill with attachment- ADD CODE for medium motor!
+    ["Drive"           ,  0  ,  -40 ,  -20 ],
+    ["Turn"            , 30  ,  20  ,  20  ],
+    ["Drive"           ,  0  ,  15  ,  15  ],
+    # Do the Row Machine- ADD CODE for motor!
+    ["Drive"           ,  0  ,  -10 ,  -5  ],
+    ["Turn"            , 30  ,   15 ,  10  ],
+    ["Drive"           ,  0  ,   30 ,  70  ],
+    # Do Weight Machine- ADD CODE for motor!
+    ["Drive"           ,  0  ,  -20 ,  -40 ],
+    ["Turn"            , 40  ,   30 ,   30 ],
+    # Do Cell Phone- ADD CODE for motor!
+    # Come back to Base- ADD CODE
 ]
 
 #Run #4- Tire Flip (M09), Robot dance (M07)
@@ -49,3 +61,5 @@ RobotDance = [
 ]
 
 Launches = [East, NorthEast, NorthWest, RobotDance]
+
+
