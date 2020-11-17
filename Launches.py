@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+
+
+
 # Run #1- Bench (M04) and Slide (M03)
 East = [
     # Does Bench 
@@ -54,7 +57,16 @@ NorthWest = [
 
 #Run #4- Tire Flip (M09), Robot dance (M07)
 RobotDance = [
-    
+    ["Drive"           ,  0  ,   30 ,   40 ],
+    ["Turn"            , -30  ,   10 ,   15 ],
+    # ADD CODE for Flipping the Tire- based on the attachment we will use
+    ["Turn"            , 10  ,   10 ,   10 ],
+    ["Drive"           ,  0  ,   20 ,   40 ],
+    ["Turn"            , 90  ,   20 ,   25 ],
+    ["Drive"           ,  0  ,   40 ,   50 ],
+    ["Turn"            , 90  ,   10 ,   10 ],
+    # ADD CODE for Robot Dance
+    # ADD CODE for driving back to base
 ]
 
 Launches = [East, NorthEast, NorthWest, RobotDance]
