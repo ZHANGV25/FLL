@@ -3,7 +3,7 @@
 
 
 
-
+# NOTE- the distances and angles will need to be slightly adjusted because the distances now are estimates
 # Run #1- Bench (M04) and Slide (M03)
 East = [
     # Does Bench 
@@ -52,7 +52,12 @@ NorthWest = [
     ["Drive"           ,  0  ,  -20 ,  -40 ],
     ["Turn"            , 40  ,   30 ,   30 ],
     # Do Cell Phone- ADD CODE for motor!
-    # Come back to Base- ADD CODE
+    # Come back to base
+    ["Drive"           ,  0  ,  -30 ,  -15 ],
+    ["Turn"            , 90  ,   15 ,  -15 ],
+    ["Drive"           ,  0  ,   40 ,   50 ],
+    ["Turn"            , 30  ,   25 ,   25 ],
+    ["Drive"           ,  0  ,   40 ,   30 ],
 ]
 
 #Run #4- Tire Flip (M09), Robot dance (M07)
@@ -65,8 +70,8 @@ RobotDance = [
     ["Turn"            , 90  ,   20 ,   25 ],
     ["Drive"           ,  0  ,   40 ,   50 ],
     ["Turn"            , 90  ,   10 ,   10 ],
-    # ADD CODE for Robot Dance
-    # ADD CODE for driving back to base
+    # Robot Dance
+    ["Turn"            , 90  ,   20 ,    2 ],
 ]
 
 Launches = [East, NorthEast, NorthWest, RobotDance]
